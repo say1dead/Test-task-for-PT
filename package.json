@@ -1,0 +1,100 @@
+{
+  "name": "VulnerabilityScanner",
+  "displayName": "Vulnerability Scanner",
+  "description": "",
+  "version": "1.0.0",
+  "publisher": "KochurovSergey",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [],
+  "activationEvents": [
+    "onCommand:VulnerabilityScanner.startScan",
+    "onCommand:VulnerabilityScanner.clearResults",
+    "onLanguage:csharp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "VulnerabilityScanner.startScan",
+        "title": "Vulnerability Scanner: Start Scan"
+      },
+      {
+        "command": "VulnerabilityScanner.clearResults",
+        "title": "Vulnerability Scanner: Clear Results"
+      }
+    ],
+    "configuration": {
+      "title": "Vulnerability Scanner",
+      "properties": {
+        "VulnerabilityScanner.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Scan C# file automatically after save."
+        },
+        "VulnerabilityScanner.enablePasswordScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect hardcoded password values."
+        },
+        "VulnerabilityScanner.enableApiKeyScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect hardcoded apiKey values."
+        },
+        "VulnerabilityScanner.enableTokenScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect hardcoded token values."
+        },
+        "VulnerabilityScanner.enableConnectionStringScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect hardcoded connection strings values."
+        },
+        "VulnerabilityScanner.includeGlobs": {
+          "type": "array",
+          "default": [
+            "**/*.cs"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Workspace globs to include in scan."
+        },
+        "VulnerabilityScanner.excludeGlobs": {
+          "type": "array",
+          "default": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/.git/**",
+            "**/.vs/**"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Workspace globs to exclude from scan."
+        },
+        "VulnerabilityScanner.customRegexes": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Additional regexes."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -112,3 +112,10 @@ var password = Environment.GetEnvironmentVariable("APP_PASSWORD");
 
 Потом откройте командную палитру:`Ctrl+Shift+P` и выберите `Vulnerability Scanner: Clear Results`
 Примечание - команда уберет ошибки только для Vulnerability Scanner.
+
+# Файлы
+- scanner.ts - основная логика поиска
+- types.ts - типы данных (dto)
+- codeActions.ts - реализация quickFix
+- extenson.ts - точка регистрации плагина
+- package.json - настройки плагина (когда активируется и настройки плагина)
